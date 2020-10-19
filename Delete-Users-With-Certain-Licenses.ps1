@@ -1,6 +1,6 @@
 #Delete all E3 licenses from all the users in the tenant
-Install-Module MSOnline -Scope CurrentUser
-Update-Module -Force
+# Install-Module MSOnline -Scope CurrentUser
+#Update-Module -Force
 Connect-MsolService
 Get-MsolAccountSku
 
