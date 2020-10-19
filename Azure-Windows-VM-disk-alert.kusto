@@ -1,0 +1,8 @@
+let PercentSpace = 20; //enter the threshold for the disk space percentage
+Perf
+| where ObjectName == "LogicalDisk" and CounterName == "% Free Space"
+| summarize FreeSpace = min(CounterValue) by Computer, InstanceName
+| where InstanceName == "C:" or InstanceName == "E:" or InstanceName == "F:"
+| where InstanceName contains ":" // look for the colon in the drive letter
+| where FreeSpace < PercentSpace // set to < in normal circumstances
+| sort by FreeSpace asc

@@ -1,0 +1,6 @@
+let PercentSpace = 20; //enter the threshold for the disk space percentage
+Perf
+| where ObjectName == "Logical Disk" and CounterName == "% Used Space" and InstanceName == "_Total" //Logical Disk (with space) only applies to Linux VMs
+| summarize FreeSpace = min(100 - CounterValue) by Computer, InstanceName
+| where FreeSpace < PercentSpace
+| sort by FreeSpace asc
