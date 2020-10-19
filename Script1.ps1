@@ -7,4 +7,4 @@ $users |
 select-object Name, @{Name = "Stamp"; Expression = { [DateTime]::FromFileTime($_.lastLogonTimestamp).ToString('yyyy-MM-dd') } }, UserPrincipalName, Enabled, DistinguishedName, Licenses | sort Name 
 Connect-MsolService
 ForEach ($user in  $users) { Get-MsolUser -UserPrincipalName $user.UserPrincipalName | DisplayName, Licenses }
-#testcomment
+#testcomment1
