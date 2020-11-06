@@ -8,7 +8,7 @@ Connect-AzureAD -ErrorAction Stop
 
 $deletionTreshold = (Get-Date).AddDays(-$deletionTresholdDays)
 
-$allDevices = Get-AzureADDevice -All:$true | Where { $_.ApproximateLastLogonTimeStamp -le $deletionTreshold }
+$allDevices = Get-AzureADDevice -All:$true | Where-Object { $_.ApproximateLastLogonTimeStamp -le $deletionTreshold }
 
 $exportPath = $(Join-Path $PSScriptRoot "AzureADDeviceExport.csv")
 
